@@ -7,7 +7,7 @@ import colors from 'colors'
 
 import {REPOS_PATH, GIT_USERS, DATE_FORMAT} from './configuration';
 
-export default async (repoName: string, date = moment(DATE_FORMAT), cb) => {
+export default async (repoName, date = moment(DATE_FORMAT), cb) => {
     const asyncInvokes = []
     const cmdMainQ = [
         `cd ${REPOS_PATH}/${repoName}`,
@@ -18,15 +18,15 @@ export default async (repoName: string, date = moment(DATE_FORMAT), cb) => {
     exec(cmdMainQ.join(' && '), (err, stdout, stderr) => {
         if (err) { console.error(stderr); cb(err) }
         else {
-            GIT_USERS.forEach((user, i) => {
+            GIT_USERS.forEach((user) => {
                 const cmdSubQ = [
                     `cd ${REPOS_PATH}/${repoName}`,
                     getGitStatForOneUser(user, date)
                 ]
 
                 asyncInvokes.push(
-                    (callback: () => void) => {
-                        exec(cmdSubQ.join(' && '), (error: Error, standartOut, standartError) => {
+                    (() => {
+                        exec(cmdSubQ.join(' && '), (error, standartOut, standartError) => {
                             if (error) cb(standartError)
                             let userDetailedStats
                             const userStats = standartOut.match(/\d+/g)
@@ -46,7 +46,7 @@ export default async (repoName: string, date = moment(DATE_FORMAT), cb) => {
 
                             cb(null, userDetailedStats)
                         })
-                    }
+                    })
                 )
             })
 
@@ -73,4 +73,4 @@ export default async (repoName: string, date = moment(DATE_FORMAT), cb) => {
     })
 }
 
-const getGitStatForOneUser = (user: string, date: any) => `git log --shortstat --author "${user}" --since "${date.format('MMM DD YYYY')}" | grep "changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed:", files, "lines inserted:", inserted, "lines deleted:", deleted}'`
+const getGitStatForOneUser = (user, date) => `git log --shortstat --author "${user}" --since "${date.format('MMM DD YYYY')}" | grep "changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed:", files, "lines inserted:", inserted, "lines deleted:", deleted}'`

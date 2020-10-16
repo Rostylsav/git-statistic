@@ -38,7 +38,7 @@ module.exports = () => {
         },
 
         resolve: {
-            extensions: ['.js', '.jsx', '.json'],
+            extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
             modules: ['node_modules'],
         },
 
@@ -52,6 +52,19 @@ module.exports = () => {
                             loader: 'babel-loader',
                         },
                     ],
+                },
+                // TODO add min-css-extract-plugin
+                {
+                    test: /\.s[ac]ss$/i,
+                    use: [
+                        { loader: 'style-loader' },
+                        { loader: 'css-loader' },
+                        { loader: 'sass-loader' }
+                    ]
+                },
+                {
+                    test: /\.(png|jpg)$/,
+                    loader: 'url-loader'
                 },
             ]
         }

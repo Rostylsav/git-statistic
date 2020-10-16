@@ -18,14 +18,14 @@ export default async (repoName, date = moment(DATE_FORMAT), cb) => {
     exec(cmdMainQ.join(' && '), (err, stdout, stderr) => {
         if (err) { console.error(stderr); cb(err) }
         else {
-            GIT_USERS.forEach((user) => {
+            GIT_USERS.forEach(user => {
                 const cmdSubQ = [
                     `cd ${REPOS_PATH}/${repoName}`,
                     getGitStatForOneUser(user, date)
                 ]
 
                 asyncInvokes.push(
-                    (() => {
+                    cb => {
                         exec(cmdSubQ.join(' && '), (error, standartOut, standartError) => {
                             if (error) cb(standartError)
                             let userDetailedStats
@@ -46,7 +46,7 @@ export default async (repoName, date = moment(DATE_FORMAT), cb) => {
 
                             cb(null, userDetailedStats)
                         })
-                    })
+                    }
                 )
             })
 

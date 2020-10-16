@@ -1,20 +1,18 @@
 {
-  "name": "citer",
+  "name": "git-statistic",
   "version": "1.0.0",
-  "description": "Citation generator.",
+  "description": "Small project for getting git statistic.",
   "main": "./src/index.ts",
   "scripts": {
     "start": "nodemon --inspect ./dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch",
-    "build": "npm run build:types && npm run build:js",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline",
-    "build:js:watch": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline --watch",
-    "clean": "rm -rf dist"
+    "build:js": "babel src --out-dir dist --extensions \".js,.jsx\" --source-maps inline",
+    "build:js:watch": "babel src --out-dir dist --extensions \".js,.jsx\" --source-maps inline --watch",
+    "clean": "rm -rf dist",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
   },
-  "author": "stepalexandr@gmail.com",
+  "author": "pas.ros.bor@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -25,7 +23,8 @@
     "@babel/preset-typescript": "^7.9.0",
     "@types/async": "^3.2.3",
     "@types/node": "^13.13.1",
-    "typescript": "^3.8.3"
+    "eslint": "^7.11.0",
+    "eslint-plugin-react": "^7.21.4"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",

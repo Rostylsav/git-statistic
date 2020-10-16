@@ -21,7 +21,6 @@ series(invokesQ, (err, results) => {
     if (err) console.error(err)
     else {
         const usersStats = GIT_USERS.map(user => {
-            console.log(results)
             const userResults = results.map(result => result.find(userResult => Object.keys(userResult)[0] === user))
             const summaryUserResult = userResults.reduce((accum, current) => {
                 const values = Object.values(current)[0]

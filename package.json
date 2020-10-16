@@ -1,7 +1,7 @@
 {
-  "name": "citer",
+  "name": "git-statistic",
   "version": "1.0.0",
-  "description": "Citation generator.",
+  "description": "Small project for getting git statistic.",
   "main": "./src/index.ts",
   "scripts": {
     "start": "nodemon --inspect ./dist",
@@ -14,7 +14,7 @@
     "build:js:watch": "babel src --out-dir dist --extensions \".ts,.tsx\" --source-maps inline --watch",
     "clean": "rm -rf dist"
   },
-  "author": "stepalexandr@gmail.com",
+  "author": "pas.ros.bor@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.8.4",

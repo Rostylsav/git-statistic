@@ -5,7 +5,7 @@ import moment from 'moment';
 import series from 'async/series';
 import colors from 'colors'
 
-import {REPOS_PATH, GIT_USERS, DATE_FORMAT} from './constants';
+import {REPOS_PATH, GIT_USERS, DATE_FORMAT} from './configuration';
 
 export default async (repoName: string, date = moment(DATE_FORMAT), cb) => {
     const asyncInvokes = []

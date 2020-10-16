@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import { writeFile } from 'fs'
 import colors from 'colors'
 
-import {START_DATE, DATE_FORMAT, REPOS, GIT_USERS} from './constants';
+import {START_DATE, DATE_FORMAT, REPOS, GIT_USERS} from './configuration';
 import helper from './helper'
 
 const fromDate = moment(START_DATE, DATE_FORMAT);

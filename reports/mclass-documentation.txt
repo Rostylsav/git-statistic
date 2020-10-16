@@ -1,0 +1,52 @@
+[
+    {
+        "rpaslavskyy": null
+    },
+    {
+        "smerlyuk": null
+    },
+    {
+        "akuzmichov": null
+    },
+    {
+        "tsemashov": null
+    },
+    {
+        "mtomashivska": null
+    },
+    {
+        "okyrychenko": null
+    },
+    {
+        "mtlumak": null
+    },
+    {
+        "akornilo": null
+    },
+    {
+        "achernivchan": null
+    },
+    {
+        "bkoroliuk": {
+            "files": 19,
+            "insertions": 84,
+            "deleted": 7
+        }
+    },
+    {
+        "mstoiko": null
+    },
+    {
+        "okrasnokutskyi": {
+            "files": 10,
+            "insertions": 47,
+            "deleted": 23
+        }
+    },
+    {
+        "vkrasov": null
+    },
+    {
+        "yshevchenko": null
+    }
+]

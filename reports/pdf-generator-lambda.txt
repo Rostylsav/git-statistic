@@ -1,0 +1,44 @@
+[
+    {
+        "rpaslavskyy": null
+    },
+    {
+        "smerlyuk": null
+    },
+    {
+        "akuzmichov": null
+    },
+    {
+        "tsemashov": null
+    },
+    {
+        "mtomashivska": null
+    },
+    {
+        "okyrychenko": null
+    },
+    {
+        "mtlumak": null
+    },
+    {
+        "akornilo": null
+    },
+    {
+        "achernivchan": null
+    },
+    {
+        "bkoroliuk": null
+    },
+    {
+        "mstoiko": null
+    },
+    {
+        "okrasnokutskyi": null
+    },
+    {
+        "vkrasov": null
+    },
+    {
+        "yshevchenko": null
+    }
+]

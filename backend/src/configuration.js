@@ -65,3 +65,4 @@ export const GIT_USERS = [
 
 export const START_DATE = '07/01/2020';
 export const DATE_FORMAT = 'MM/DD/YYYY';
+export const port = process.env.PORT || 5000;

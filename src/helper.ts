@@ -11,12 +11,10 @@ export default async (repoName: string, date = moment(DATE_FORMAT), cb) => {
     const asyncInvokes = []
     const cmdMainQ = [
         `cd ${REPOS_PATH}/${repoName}`,
-        // 'git add .',
-        // 'git stash',
         'git checkout master',
         'git pull'
     ]
-    
+
     exec(cmdMainQ.join(' && '), (err, stdout, stderr) => {
         if (err) { console.error(stderr); cb(err) }
         else {
@@ -25,17 +23,23 @@ export default async (repoName: string, date = moment(DATE_FORMAT), cb) => {
                     `cd ${REPOS_PATH}/${repoName}`,
                     getGitStatForOneUser(user, date)
                 ]
-        
+
                 asyncInvokes.push(
-                    (cb: Function) => {
-                        exec(cmdSubQ.join(' && '), (err, stdout, stderr) => {
-                            if (err) cb(stderr)
+                    (callback: () => void) => {
+                        exec(cmdSubQ.join(' && '), (error: Error, standartOut, standartError) => {
+                            if (error) cb(standartError)
                             let userDetailedStats
-                            const userStats = stdout.match(/\d+/g)
+                            const userStats = standartOut.match(/\d+/g)
 
                             if (userStats) {
                                 const userStatsValues = userStats.map(value => parseInt(value, 10))
-                                userDetailedStats = { [user]: { files: userStatsValues[0], insertions: userStatsValues[1], deleted: userStatsValues[2] } }
+                                userDetailedStats = {
+                                    [user]: {
+                                        files: userStatsValues[0],
+                                        insertions: userStatsValues[1],
+                                        deleted: userStatsValues[2]
+                                    }
+                                }
                             } else {
                                 userDetailedStats= { [user]: null };
                             }
@@ -46,15 +50,21 @@ export default async (repoName: string, date = moment(DATE_FORMAT), cb) => {
                 )
             })
 
-            series(asyncInvokes, (err, result) => {
-                if (err) { console.error(err); cb(err) }
+            series(asyncInvokes, (error, result) => {
+                if (error) { console.error(error); cb(error) }
                 else {
                     writeFile(
-                        resolve(__dirname, "..", 'reports', `${repoName}.txt`), JSON.stringify(result, null, 4), (err) => {
-                            if (err) { console.error(err); cb(err) }
-                            else console.log(`Successed with ${ colors.blue(repoName)}.`)
+                        resolve(
+                            __dirname,
+                            "..",
+                            'reports',
+                            `${repoName}.txt`
+                        ),
+                        JSON.stringify(result, null, 4),
+                        (errorObj) => {
+                            if (errorObj) { console.error(errorObj); cb(errorObj) }
+                            else console.info(`Successed with ${ colors.blue(repoName)}.`)
                         }
-            
                     )
                     cb(null, result)
                 }

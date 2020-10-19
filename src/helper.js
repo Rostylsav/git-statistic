@@ -7,7 +7,7 @@ import colors from 'colors'
 
 import {REPOS_PATH, GIT_USERS, DATE_FORMAT} from './configuration';
 
-export default async (repoName, date = moment(DATE_FORMAT), cb) => {
+export default async (repoName, startDate = moment(DATE_FORMAT), endDate = moment(DATE_FORMAT),cb) => {
     const asyncInvokes = []
     const cmdMainQ = [
         `cd ${REPOS_PATH}/${repoName}`,
@@ -21,7 +21,7 @@ export default async (repoName, date = moment(DATE_FORMAT), cb) => {
             GIT_USERS.forEach(user => {
                 const cmdSubQ = [
                     `cd ${REPOS_PATH}/${repoName}`,
-                    getGitStatForOneUser(user, date)
+                    getGitStatForOneUser(user, startDate, endDate)
                 ]
 
                 asyncInvokes.push(
@@ -73,4 +73,4 @@ export default async (repoName, date = moment(DATE_FORMAT), cb) => {
     })
 }
 
-const getGitStatForOneUser = (user, date) => `git log --shortstat --author "${user}" --since "${date.format('MMM DD YYYY')}" | grep "changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed:", files, "lines inserted:", inserted, "lines deleted:", deleted}'`
+const getGitStatForOneUser = (user, startDate, endDate) => `git log --shortstat --author "${user}" --since "${startDate.format('MMM DD YYYY')}" --until "${endDate.format('MMM DD YYYY')}" | grep "changed" | awk '{files+=$1; inserted+=$4; deleted+=$6} END {print "files changed:", files, "lines inserted:", inserted, "lines deleted:", deleted}'`

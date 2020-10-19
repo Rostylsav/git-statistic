@@ -4,16 +4,17 @@ import { resolve } from 'path'
 import { writeFile } from 'fs'
 import colors from 'colors'
 
-import {START_DATE, DATE_FORMAT, REPOS, GIT_USERS} from './configuration';
+import {START_DATE, END_DATE, DATE_FORMAT, REPOS, GIT_USERS} from './configuration';
 import helper from './helper'
 
-const fromDate = moment(START_DATE, DATE_FORMAT);
+const startDate = moment(START_DATE, DATE_FORMAT);
+const endDate = moment(END_DATE, DATE_FORMAT);
 const invokesQ = []
 const mainStatsFilePath = resolve(__dirname, "..", 'reports', `main-stats.txt`)
 
 REPOS.forEach(repo => {
     invokesQ.push( (cb) => {
-        helper(repo, fromDate, cb)
+        helper(repo, startDate, endDate, cb)
     })
 })
 

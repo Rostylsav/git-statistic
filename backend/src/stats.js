@@ -39,6 +39,8 @@ export default () => {
                 if (error) console.error(error)
                 else console.info(colors.blue('Overall statistic has been generated!'))
             })
+
+            return usersStats;
         }
     })
 }

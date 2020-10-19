@@ -1,35 +1,29 @@
 import {
-    ADD_REPOSITORY,
-    REMOVE_REPOSITORIES,
-    SELECT_REPOSITORIES,
-    GET_STATUSES_DONE
+    REMOVE_USERS,
+    ADD_USER,
+    SELECT_USER
 } from '../../../actions/actionTypes';
 
 const initState = [];
 
-const repositoriesListReducer =  (state = initState, action) => {
+const usersListReducer =  (state = initState, action) => {
     switch (action.type) {
-        case ADD_REPOSITORY: 
+        case ADD_USER: 
             return  [...state, action.payload]
-        case REMOVE_REPOSITORIES: {
+        case REMOVE_USERS: {
             const selectedRepoIds = action.payload.map( repo => repo.id);
             return [ ...state.filter( repo => !selectedRepoIds.includes(repo.id))]
         }
-        case SELECT_REPOSITORIES: {
+        case SELECT_USER: {
             const {ids, value} = action.payload;
             return [ ...state.map( repo => {
                 repo.isChecked = ids.includes(repo.id) ? value : repo.isChecked;
                 return repo
             })]
         }
-        case GET_STATUSES_DONE:
-            return [ ...state.map( repo => {
-                const updatedRepo = action.payload.find( item => item.id === repo.id);
-                return updatedRepo ? updatedRepo : repo;
-            })]
         default:
             return state;
     }
 };
 
-export default repositoriesListReducer;
+export default usersListReducer;

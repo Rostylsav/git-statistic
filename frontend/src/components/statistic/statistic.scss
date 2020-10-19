@@ -1,0 +1,12 @@
+.statistic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .get-statistic-button {
+        width: 200px;
+        height: 40px;
+        font-size: 20px;
+        margin: 20px;
+    }
+}

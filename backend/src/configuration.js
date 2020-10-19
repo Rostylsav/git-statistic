@@ -1,6 +1,4 @@
-import { resolve } from 'path'
-
-export const REPOS_PATH = resolve(__dirname, "../../../Skylight") // path to folder with all repos
+export const REPOS_PATH = '/Users/rpas/work/Skylight' // path to folder with all repos
 export const REPOS = [
     'dibels8-classroom-reports',
     'mbark',

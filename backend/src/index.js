@@ -2,7 +2,8 @@ import express from 'express';
 import bodyParser from 'body-parser'
 import cors from 'cors'
 
-import { port } from './configuration'
+import { port } from './configuration';
+import handlers from './handlers'
 
 // Create server
 const app = express()
@@ -14,6 +15,10 @@ app
 app.get('/', (_, response) => {
     response.end('1')
 })
+
+app.get('/get-statuses', handlers.getStatusesHandler)
+
+app.get('/get-statistic', handlers.getStatisticHandler)
 
 app.post('/set-params', (request, response) => {
     console.log(request.body)

@@ -1,0 +1,52 @@
+.item-container {
+    height: 25px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+    &:nth-child(odd) {
+        background: #ecebeb;
+    }
+    .checkbox-container {
+        min-width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .checkbox {
+
+        }
+    }
+    
+    .item {
+        font-size: 20px;
+        padding: 10px;
+        width: 200%;
+    }
+
+    .status-container {
+        min-width: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .correct-icon {
+                background-image: url("../../../images/correct.png");
+        }
+        .error-icon {
+            background-image: url("../../../images/error.jpg");
+        }
+    }
+    .remove-button-container {
+        min-width: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .remove-button {
+            background-image: url("../../../images/trash.png");
+            border: none;
+        }
+    }
+}

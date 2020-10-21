@@ -28,8 +28,8 @@ Small project for getting git statistic
 # Troubleshooting
 
 1. No such file or directory <br />
-    a. Check `REPOS_PATH` constnat. In most cases path is wrong. <br />
-    b. Check `REPOS` constna. Some folder names may not exist or have typo.
+    a. Check `REPOS_PATH` constant. In most cases path is wrong. <br />
+    b. Check `REPOS` constant. Some folder names may not exist or have typo.
 2. `.lock` files. <br />
 In some cases inside repository in folder `.git` you can get `.lock` files which blocks `'git checkout master', 'git pull'` commands. To fix this issue just remove them and restart project.
 

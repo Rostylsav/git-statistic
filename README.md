@@ -1,7 +1,9 @@
 # git-statistic
+
 Small project for getting git statistic
 
 # Preparation
+
 1. Download all needed repositories in to one folder.
 2. Clone `git-statistic` project.
 3. Open `git-statistic/src/configuration.js` file and update next constnats. <br />
@@ -15,12 +17,12 @@ Small project for getting git statistic
     Example: `'10/01/2020'`.
 4. Create `reports` folder on the same level as `src`.
 
-
 # Setup/start
-2. Open terminal and navigate to `git-statistic` folder.
-3. Run `npm i` command.
-4. Run `npm run build:js` or `npm run build:js:watch` for development.
-5. In case you run `npm run build:js:watch` command, than you need new terminal window/tab and run `npm start`  otherways just run command.
+
+1. Open terminal and navigate to `git-statistic` folder.
+2. Run `npm i` command.
+3. Run `npm run build:js` or `npm run build:js:watch` for development.
+4. In case you run `npm run build:js:watch` command, than you need new terminal window/tab and run `npm start`  otherways just run command.
 
 
 # Troubleshooting
